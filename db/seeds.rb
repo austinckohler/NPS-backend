@@ -5,7 +5,6 @@ def get_parks
     response = RestClient.get "https://developer.nps.gov/api/v1/parks?limit=100&api_key=OJcmf4YsPUqMl90s4imakbUhVLGB0dewlTFqOPOa"
     parsed_json = JSON.parse(response)
 
-    if !parsed_json.nil?
         parsed_json["data"].map do |park|
             Park.create(
                 state: park["states"],
@@ -17,8 +16,21 @@ def get_parks
                 park_code: park["parkCode"]
         )
         end
-    else
-        puts "error seeding"
+
+        if !Park.all.nil?
+        Park.all.map do |park|
+        alerts_response = RestClient.get "https://developer.nps.gov/api/v1/alerts?parkCode=#{park.park_code}&limit=100&api_key=OJcmf4YsPUqMl90s4imakbUhVLGB0dewlTFqOPOa"
+        parsed_alerts = JSON.parse(alerts_response)
+
+            parsed_alerts["data"].map do |alert|
+                Alert.create(
+                    title: alert["title"],
+                    description: alert["description"],
+                    category: alert["category"],
+                    park_id: park.id
+            )
+            end
+        end
     end
 end
 get_parks

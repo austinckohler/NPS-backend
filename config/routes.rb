@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :alerts
   resources :parks
   resources :users, only: [:create]
   post "login", to: "authentication#login"

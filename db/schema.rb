@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_023858) do
+ActiveRecord::Schema.define(version: 2020_05_27_032435) do
+
+  create_table "alerts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "category"
+    t.integer "park_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["park_id"], name: "index_alerts_on_park_id"
+  end
 
   create_table "parks", force: :cascade do |t|
     t.string "state"
@@ -31,4 +41,5 @@ ActiveRecord::Schema.define(version: 2020_05_27_023858) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "alerts", "parks"
 end

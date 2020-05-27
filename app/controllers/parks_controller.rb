@@ -4,7 +4,7 @@ class ParksController < ApplicationController
     
         def index
             @parks = Park.all
-            render json: @parks
+            render json: @parks, include: [:alerts]
         end
         
         def show

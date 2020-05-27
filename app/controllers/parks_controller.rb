@@ -9,7 +9,7 @@ class ParksController < ApplicationController
         
         def show
             if @park
-                render json: @park
+                render json: @park, include: [:alerts]
             else 
                 render json: {message:"We couldn't find a park with that id"}
             end

@@ -14,5 +14,10 @@ before_action :authenticate, only: [:index, :update]
         render json: { username: @user.username }
     end
 
+    # def destroy
+    #     @user.destroy
+    #     render json: { message: @user }
+    # end
+
 end     
 

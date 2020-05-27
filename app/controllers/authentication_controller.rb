@@ -9,7 +9,7 @@ class AuthenticationController < ApplicationController
             if !@user.authenticate params[:password]
                 render json: {error: "Invalid Password"}, status: :unauthorized
             else 
-                payload ={
+                payload = {
                     user_id: @user.id,
                     username: @user.username 
                 }

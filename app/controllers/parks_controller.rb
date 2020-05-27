@@ -8,7 +8,11 @@ class ParksController < ApplicationController
         end
         
         def show
-            render json: @park
+            if @park
+                render json: @park
+            else 
+                render json: {message:"We couldn't find a park with that id"}
+            end
         end
         
         def create
@@ -29,10 +33,10 @@ class ParksController < ApplicationController
         private 
     
         def park_params
-            params.require(:park).permit(:state, :url, :weather, :name, :latitude_longitude, :description)
+            params.require(:park).permit(:state, :url, :weather, :name, :latitude_longitude, :description, :park_code)
         end
     
         def find_park_by_id
-            Park.find(params[:id])
+            @park = Park.find(params[:id])
         end
 end

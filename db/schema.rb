@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_200128) do
+ActiveRecord::Schema.define(version: 2020_05_27_023858) do
+
+  create_table "parks", force: :cascade do |t|
+    t.string "state"
+    t.text "url"
+    t.text "weather"
+    t.string "name"
+    t.string "lat_long"
+    t.text "description"
+    t.string "park_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

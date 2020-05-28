@@ -27,6 +27,7 @@ def get_parks
                     title: alert["title"],
                     description: alert["description"],
                     category: alert["category"],
+                    park_code: alert["parkCode"],
                     park_id: park.id
             )
             end

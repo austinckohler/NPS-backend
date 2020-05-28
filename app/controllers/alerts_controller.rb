@@ -8,7 +8,7 @@ class AlertsController < ApplicationController
         end
         
         def show
-            render json: @alert
+            render json: @alert, include: [:park]
         end
         
         def create
@@ -29,7 +29,7 @@ class AlertsController < ApplicationController
         private 
     
         def alert_params
-            params.require(:alert).permit(:title, :description, :category)
+            params.require(:alert).permit(:title, :description, :category, :park_code)
         end
     
         def find_alert_by_id

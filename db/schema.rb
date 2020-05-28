@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_032435) do
     t.string "title"
     t.text "description"
     t.string "category"
+    t.string "park_code"
     t.integer "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

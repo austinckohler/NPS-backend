@@ -13,7 +13,9 @@ def get_parks
                 name: park["fullName"],
                 lat_long: park["latLong"],
                 description: park["description"],
-                park_code: park["parkCode"]
+                park_code: park["parkCode"],
+                # designation: park["designation"],
+                # images: park["images"]["url"] would be all 5 images url (not sure if it actually shows image or it its just the url)
         )
         end
 

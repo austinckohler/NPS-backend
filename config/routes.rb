@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :alerts
   resources :parks
-  resources :users, only: [:create]
+  resources :users, only: [:index, :show, :create]
   post "login", to: "authentication#login"
+  get "login", to: "authentication#login"
   get "user-profiles", to: "profiles#index"
   put "user-profiles", to: "profiles#update"
 

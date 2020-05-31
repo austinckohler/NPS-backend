@@ -33,7 +33,7 @@ class ParksController < ApplicationController
         private 
     
         def park_params
-            params.require(:park).permit(:state, :url, :weather, :name, :latitude_longitude, :description, :park_code)
+            params.require(:park).permit(:state, :url, :weather, :name, :lat_long, :description, :park_code)
         end
     
         def find_park_by_id
